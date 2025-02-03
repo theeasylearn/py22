@@ -1,4 +1,4 @@
-#concept of variables in python 
+#concept of variables in python  
 '''
     syntax 
     variable-name = value 
