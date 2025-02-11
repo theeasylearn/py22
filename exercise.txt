@@ -1,0 +1,13 @@
+1) write a program to accept total minutes from user and convert it into  hours and remaining minutes
+input : 150 minutes output 2 hours 30 minutes 
+
+2) write a program to accept total seconds from user and convert it into  hours and remaining minutes & remaining seconds
+input : 3675 seconds output 1 hour minute 1 seconds 15 
+
+3) write a program to accept two digit amount from user and reverse it (as number)
+input : 45 output 54
+input : 29 output 92
+
+4) write a program to accept 3 digit amount from user and reverse it (as number)
+input : 145 output 541
+input : 298 output 892
