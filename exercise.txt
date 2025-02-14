@@ -11,3 +11,9 @@ input : 29 output 92
 4) write a program to accept 3 digit amount from user and reverse it (as number)
 input : 145 output 541
 input : 298 output 892
+
+decision making 
+------------------
+    simple decision making if 
+        1) write a program to findout square of given value 
+        2) write a program to decide type of shape (square,portrait, landscape) from given length and width 
