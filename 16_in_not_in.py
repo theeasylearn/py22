@@ -1,9 +1,15 @@
 #concept of in and not in operator 
-fruits = ['banana','mango','pinapple','kiwi','orange']
+fruits = ['banana','mango','pineapple','kiwi','orange']
 print(fruits)
 favorite_fruit = input("Enter your favorite fruit name") #apple
-is_found = favorite_fruit in fruits
-print(is_found)
+isFound = favorite_fruit in fruits
+print(isFound)
 
-is_not_found = favorite_fruit not in fruits
-print(is_not_found)
+isNotFound = favorite_fruit not in fruits
+print(isNotFound)
+
+cities = "Bhavnagar Baroda Rajkot Surendranagar"
+print(cities)
+current_city = input("where do you live (city)?")
+isFound = current_city in cities
+print(isFound)
