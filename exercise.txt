@@ -23,3 +23,11 @@ decision making
          (foot and inch) and weight.
 
          
+write a program to accept day of week from user. and display name of the day using if elif and if else 
+
+write a program to display name of the month from given month no using if elif and if else 
+
+write a program to display name of the month from given month without using decision making
+
+write a program to accept birth date & month and decide and display zodiac sign as per new dates. 
+https://fr.pinterest.com/pin/81698180718875314/
