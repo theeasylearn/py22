@@ -35,5 +35,13 @@ loop
 ------------
 0 1 1 2 3 5 8 13 ..... 1000
 
+
 1 2 3 5 7 11 13 17 19 ....... 10000
+
+write a program to check whether given number is composite number or not 
+
+write a program to generate reverse of given number using maths and loop 
+
+write a program to check whether given number is palindrome or not
+input : 1331 reverse 1331 
 
