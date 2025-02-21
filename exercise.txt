@@ -45,3 +45,18 @@ write a program to generate reverse of given number using maths and loop
 write a program to check whether given number is palindrome or not
 input : 1331 reverse 1331 
 
+for loop 
+    write a program to count positive and negative values in tuples 
+
+    write a program to findout minimum and maximum from the list 
+
+    write a program to findout whether list is continuous or not 
+    list1 = [10,11,12,13,14,15] it is continuous list 
+    list1 = [10,11,12,14,15,16] it is not continuous list 
+
+    write a program to findout whether all the words in list are starting with vowels or not 
+
+    friends1 = ['Asha','Priti','Sheela','Mona','Radha'] list has friends not starting with vowels
+    friends2 = ['Aarohi','Oli','Ela'] list has friends not with vowels
+
+    write a program to findout whether given name is good as per numerology or not. also changes name as numerology
