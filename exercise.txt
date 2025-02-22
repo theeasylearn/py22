@@ -60,3 +60,8 @@ for loop
     friends2 = ['Aarohi','Oli','Ela'] list has friends not with vowels
 
     write a program to findout whether given name is good as per numerology or not. also changes name as numerology
+
+nested loop 
+
+    1) https://jaro-website.s3.ap-south-1.amazonaws.com/2024/06/Pattern-Programs-in-C.jpg
+    2) https://journaldev.nyc3.cdn.digitaloceanspaces.com/2019/01/pyramid-pattern-programs-in-java.png
