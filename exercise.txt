@@ -72,3 +72,6 @@ functions
     create function that will return indian state names and from any all asian state names 
     create function that will return two list one has only odd values and other has only event value from any number of values passed in function 
     
+recursion
+    write a program to find & display octal of given decimal number 
+    write a program to find & display hexadecimal of given decimal number 
