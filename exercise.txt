@@ -75,3 +75,18 @@ functions
 recursion
     write a program to find & display octal of given decimal number 
     write a program to find & display hexadecimal of given decimal number 
+
+
+modules 
+    create python module unit_converter.py  which has below functions 
+        function to convert inch to Foot
+        function to convert inch to Meter
+        function to convert inch to KiloMeter
+        function to convert inch to Mile 
+    
+    create python module AmountToWords.py which has below function 
+        function to convert amount into words (toWords)
+            input : 123 output one two three 
+        function to convert amount in words to digit (toAmount)
+            input : one two three 
+            output : 123
