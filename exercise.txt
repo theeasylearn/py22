@@ -90,3 +90,5 @@ modules
         function to convert amount in words to digit (toAmount)
             input : one two three 
             output : 123
+
+Develop game of "Char Chitthi" 
