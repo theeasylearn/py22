@@ -92,3 +92,10 @@ modules
             output : 123
 
 Develop game of "Char Chitthi" 
+
+date time 
+--------------------
+1) write a code to findout whether person is require to pay fine of 1000 Rs. from installment payment date & due date given by user. 
+
+2) write a code to findout younger sibling from 3 child birth date. 
+
