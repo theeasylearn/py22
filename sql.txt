@@ -100,3 +100,83 @@ sql query
     fetch customerNumber, customerName,creditLimit of those customers whose credit limit is below 100000
 
     select customerNumber, customerName, creditLimit from customers where creditLimit<100000
+
+    fetch customerNumber, customerName,creditLimit of those customers whose credit limit is between 100000 and 200000
+
+    select customerNumber, customerName, creditLimit from customers where creditLimit<100000 and creditLimit>200000
+
+    OR 
+    
+    select customerNumber, customerName, creditLimit from customers where creditLimit between 100000 and 200000
+
+    fetch customerNumber, customerName, city, state, country of those customers who are from usa or france or spain 
+
+    select customerNumber, customerName, city, state, country from customers where country='USA' or country='france' or country='spain'
+
+    OR 
+
+    select customerNumber, customerName, city, state, country from customers where country in ('USA','france','spain')
+
+    fetch customerNumber, customerName, city, state, country of those customers who are not from usa or france or spain or india 
+
+    select customerNumber, customerName, city, state, country from customers where country!='USA' and country!='france' and country!='spain' and country!='india'
+
+    OR 
+
+    select customerNumber, customerName, city, state, country from customers where country not in ('USA','france','spain','india')
+
+    fetch customerName from customers table whose customerName has wheels anywhere in name 
+
+    select customerName from customers where customerName like '%wheels%'
+
+    fetch unique country names from customers
+
+    select distinct(country) from customers
+
+    Aggregate functions 
+    --------------------------------------------------------------------------------
+    function which works upon numeric field and always returns single value is called Aggregate functions. 
+
+    do not use fields with Aggregate function as it may give incorrect result. 
+	
+	1) sum
+	used to get total of given numeric field 
+
+    fetch total payments received so far (till now). 
+	select sum(amount) as total from payments
+
+	2) avg
+	used to get average of given numeric field 
+	select avg(amount) as average from payments
+
+	3) min
+	used to get minimum value of given numeric field 
+	select min(amount) as minimum from payments
+
+	4) max 
+	used to get maximum value of given numeric field. 
+	select max(amount) as maximum from payments 
+
+	5) count(*)
+	used to count no of rows in table as per condition.
+
+    count all rows 
+    select count(*) as no_of_payments from payments
+
+    count payments as per conditions  
+    count no of payments made by customerNumber 112
+    select count(*) from customers where customerNumber=112
+
+we can use where clause with Aggregate functions to do calculation as per conditions. this is very much required. 
+
+fetch total payment amount received in 2004 
+    select sum(amount) as total from payments where paymentDate>='2004-01-01' and paymentDate<='2004-12-31'
+
+    or 
+    select sum(amount) as total from payments where left(paymentDate,4) = '2004'
+
+fetch total payment amount received in march 2004 
+select sum(amount) as total from payments where paymentDate>='2004-03-01' and paymentDate<='2004-03-31'
+
+or 
+    select sum(amount) as total from payments where left(paymentDate,7) = '2004-03'
