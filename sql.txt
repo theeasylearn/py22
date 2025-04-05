@@ -180,3 +180,55 @@ select sum(amount) as total from payments where paymentDate>='2004-03-01' and pa
 
 or 
     select sum(amount) as total from payments where left(paymentDate,7) = '2004-03'
+
+fetch each and every customers total  payments 
+select customerNumber,sum(amount) from payments group by customerNumber;
+
+
+fetch no of orders placed by each and every customers.
+select customerNumber,count(*) 'order_count' from orders group by customerNumber;
+
+
+fetch no of orders in each calendar year 
+select left(orderDate,4) as year,count(*) as 'order_count' from orders group by left(orderDate,4)
+
+fetch country name and no of customers from each country 
+select country,count(*) as 'country_count' from customers group by country
+
+fetch country name and no of customers from each country of those country where count of customers is above 4 
+select country,count(*) as 'country_count' from customers group by country having count(*)>4
+
+fetch no of orders placed by each and every customers of those customers who have given 4 or more orders 
+
+select customerNumber,count(*) as 'order_count' from orders group by customerNumber having count(*)>3;
+
+
+how to display data in specific  sequence?
+we use order by clause in select to display data in specific  sequence. if we dont use order by clause select will display data as per insertion order.
+
+display customerNumber & customerName in ascending order of customerName
+select customerNumber,customerName from customers order by customerName
+
+display customerNumber & customerName in descending order of customerName
+select customerNumber,customerName from customers order by customerName desc
+
+we can use multiple fields in order by clause
+display customerNumber & customerName,country,state,city in ascending order of country then state and then city 
+
+
+select customerNumber,customerName,country,state,city from customers order by country, state, city
+
+fetch most recent 10 orders 
+select * from orders order by orderNumber desc limit 0,10
+
+fetch top 10 largest payments 
+select amount from payments order by amount desc limit 0,10
+
+fetch next 10 largest payments
+select amount from payments order by amount desc limit 10,10
+
+fetch orderNumber,orderDate,amount & display it in indian format
+select orderNumber,DATE_FORMAT(orderDate,'%d-%m-%Y') as orderDate from orders
+
+fetch orderNumber,orderDate,amount & display it in indian format with day name of week 
+select orderNumber,DATE_FORMAT(orderDate,'%a %d-%m-%Y') as orderDate from orders;
