@@ -1,0 +1,18 @@
+Book Library (Single Table)
+Description:
+A mini system to manage books in your personal library.
+
+Table: books
+Fields:
+- id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+- title (TEXT)
+- author (TEXT)
+- genre (TEXT)
+- year_published (INTEGER)
+- status (TEXT: Available/Borrowed)
+
+Features:
+- Add, edit, delete books
+- Mark books as borrowed or available
+- Search by title or author
+
