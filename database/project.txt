@@ -9,7 +9,7 @@ Fields:
 - author (TEXT)
 - genre (TEXT)
 - year_published (INTEGER)
-- status (TEXT: Available/Borrowed)
+- status (TEXT: owned/Borrowed)
 
 Features:
 - Add, edit, delete books
