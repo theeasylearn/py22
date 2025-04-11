@@ -13,6 +13,27 @@
     develop display book(s) module 
 '''
 import db_helper as db
+def showBooks():
+    sql = "select * from books order by id desc"
+    '''
+    [
+      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+    ]
+    '''
+    tables = db.fetch(sql)
+    print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    print(f"{'id':<5} {'title':<64} {'author':<32} {'category':<32} {'year':<8} {'status':<10}")
+    print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    count = len(tables)
+    for row in tables:
+        output = f"{row['id']:<5} {row['title']:<64} {row['author']:<32} {row['genre']:<32} {row['year_published']:<8} {row['status']:<10}"
+        print(output)
+    print("-------------------------------------------------------------------------------------------------------")
+    print(f"no of books in your libarary = {count}")
+    pause = input('press any key')
+    
 while 1:
     try:
         print("Press 1 to view all books")
@@ -28,18 +49,7 @@ while 1:
             print("Good bye")
             break
         elif choice == 1:
-          sql = "select * from books order by id desc"
-          '''
-          [
-            {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-            {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-            {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-          ]
-          '''
-          tables = db.fetch(sql)
-          for row in tables:
-            print(row)
-            
+         showBooks()
         elif choice == 2:
           print("Enter book detail")
           title = input("Enter Title")
@@ -58,7 +68,15 @@ while 1:
         elif choice == 3:
           print('we will update book')
         elif choice == 4:
-         print('we will delete book')
+          showBooks()
+          bookid = int(input("Enter book id"))
+          sql = "delete from books where id=%s"
+          data = [bookid]
+          count = db.modify(sql,data)
+          if count==0:
+            print('book not found')
+          else: 
+            print('book has been deleted successfully')
         elif choice == 5:
          print('we will search book by title')
         elif choice == 6:

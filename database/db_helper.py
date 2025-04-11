@@ -25,7 +25,7 @@ def modify(sql,data):
 
 def fetch(sql,data=None):
     try:
-        command = con.database.cursor();
+        command = con.database.cursor(dictionary=True);
         print(sql)
         if data!=None:
             print(data)
