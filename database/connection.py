@@ -1,6 +1,6 @@
 import mysql.connector as connector
 try:
-    database = connector.connect(host='localhost',user='root',passwd='',database='py22',port='3306')
+    database = connector.connect(host='localhost',user='root',passwd='',database='py22',port='3308')
     print('connection created.....')
 except connector.Error as e:
     print('Error occurred (please read detail given below)')

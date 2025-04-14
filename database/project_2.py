@@ -13,27 +13,33 @@
     develop display book(s) module 
 '''
 import db_helper as db
-def showBooks():
-    sql = "select * from books order by id desc"
-    '''
-    [
-      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-      {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
-    ]
-    '''
-    tables = db.fetch(sql)
+def showBooks(sql,data=None):
+  '''
+  [
+    {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+    {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+    {'id':2,'title':'abc','author':'xyz','genre':'drama','year_published':2024,'status':1},
+  ]
+  '''
+  tables = db.fetch(sql,data)
+  count = len(tables)
+  if count==0: # book not found
+     print("book not found.")
+  else:
     print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
     print(f"{'id':<5} {'title':<64} {'author':<32} {'category':<32} {'year':<8} {'status':<10}")
     print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
-    count = len(tables)
     for row in tables:
-        output = f"{row['id']:<5} {row['title']:<64} {row['author']:<32} {row['genre']:<32} {row['year_published']:<8} {row['status']:<10}"
+        msg = ''
+        if row['status'] == 1:
+           msg = "purchased"
+        else:
+           msg = "Borrowed" 
+        output = f"{row['id']:<5} {row['title']:<64} {row['author']:<32} {row['genre']:<32} {row['year_published']:<8} {msg:<10}"
         print(output)
     print("-------------------------------------------------------------------------------------------------------")
     print(f"no of books in your libarary = {count}")
-    pause = input('press any key')
-    
+  pause = input('press any key')
 while 1:
     try:
         print("Press 1 to view all books")
@@ -49,7 +55,8 @@ while 1:
             print("Good bye")
             break
         elif choice == 1:
-         showBooks()
+            sql = "select * from books order by id desc"
+            showBooks(sql)
         elif choice == 2:
           print("Enter book detail")
           title = input("Enter Title")
@@ -78,11 +85,27 @@ while 1:
           else: 
             print('book has been deleted successfully')
         elif choice == 5:
-         print('we will search book by title')
+          title = input("Enter few words of book title to search book by title")
+          sql = "select * from books where title like %s"
+          data = [f"%{title}%"]  # Add wildcards around the input
+          showBooks(sql,data)
         elif choice == 6:
-         print('we will search book by author')
+           author = input("Enter few words of book author to search book by author")
+           sql = "select * from books where author like %s"
+           data = [f"%{author}%"]
+           showBooks(sql,data)
         elif choice == 7:
-         print('we will update book status')
+         sql = "select * from books order by title"
+         showBooks(sql)
+         bookID = int(input("Enter book id to update status")) 
+         status = int(input("Enter book status 1 = purchased 2 = borrowed"))
+         sql = "update books set status=%s where id=%s"
+         data = [status,bookID]
+         count = db.modify(sql,data)
+         if count == 0:
+            print('book not found')
+         else:
+            print('book updated')
         else:
          print('invalid choice')
     except ValueError as error:

@@ -29,10 +29,10 @@ def fetch(sql,data=None):
         print(sql)
         if data!=None:
             print(data)
-            command.execute(sql,data)
+            command.execute(sql,data)    
         else:
             command.execute(sql)
-            return command.fetchall()
+        return command.fetchall()
     except connector.Error as e:
         print('Error occurred (please read detail given below)')
         print(e.errno)
