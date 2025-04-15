@@ -13,6 +13,13 @@
     develop display book(s) module 
 '''
 import db_helper as db
+def getInput():
+  title = input("Enter Title")
+  author = input("Enter author")
+  category = input("Enter category")
+  publication_year = input("Enter publication year")
+  status = int(input("Enter status (1=owned, 2 = borrowed)"))
+  return title,author,category,publication_year,status #return multiple value as tuple
 def showBooks(sql,data=None):
   '''
   [
@@ -59,13 +66,10 @@ while 1:
             showBooks(sql)
         elif choice == 2:
           print("Enter book detail")
-          title = input("Enter Title")
-          author = input("Enter author")
-          category = input("Enter category")
-          publication_year = input("Enter publication year")
-          status = int(input("Enter status (1=owned, 2 = borrowed)"))
+          book = getInput() # getinput function will return tuples (ready only list)
+          # title,author,category,publication_year,status
           sql = "insert into books (title,author,genre,year_published,status) values(%s,%s,%s,%s,%s)"
-          data = [title,author,category,publication_year,status]
+          data = [book[0],book[1],book[2],book[3],book[4]]
           count = db.modify(sql,data)
           if count==1:
             print('Book added')
@@ -73,7 +77,18 @@ while 1:
             print('Error occurred while inserting book')
           pause = input('press any key')
         elif choice == 3:
-          print('we will update book')
+          sql = "select * from books order by title"
+          showBooks(sql)
+          bookID = int(input("Enter book id to update status")) 
+          book = getInput() # getinput function will return tuples (ready only list)
+          sql = "update books set title=%s,author=%s,genre=%s,year_published=%s,status=%s where id=%s";
+          data = [book[0],book[1],book[2],book[3],book[4],bookID]
+          count = db.modify(sql,data)
+          if count==1:
+            print('Book updated successfully')
+          else:
+            print('Error occurred while updating book')
+          pause = int(input("press any key to continue"))
         elif choice == 4:
           showBooks()
           bookid = int(input("Enter book id"))
