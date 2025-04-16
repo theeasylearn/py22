@@ -13,6 +13,8 @@
     develop display book(s) module 
 '''
 import db_helper as db
+import pandas as pd
+import connection as con 
 def getInput():
   title = input("Enter Title")
   author = input("Enter author")
@@ -56,6 +58,7 @@ while 1:
         print("Press 5 to search book by title")
         print("Press 6 to search book by author")
         print("Press 7 to update book status")
+        print("Press 8 to generate backup as excel file")
         print("Press 0 to exit")
         choice = int(input("Enter your choice"))
         if choice == 0:
@@ -121,6 +124,12 @@ while 1:
             print('book not found')
          else:
             print('book updated')
+        elif choice == 8:
+          sql = "select * from books order by id"
+          data_frame = pd.read_sql(sql,con=con.database)
+          data_frame.to_excel("backup.xlsx", index=False)
+          print("Data exported to backup.xlsx successfully!")
+          pause = int(input('press any key to continue'))
         else:
          print('invalid choice')
     except ValueError as error:
