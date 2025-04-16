@@ -15,6 +15,7 @@
 import db_helper as db
 import pandas as pd
 import connection as con 
+from sqlalchemy import create_engine
 def getInput():
   title = input("Enter Title")
   author = input("Enter author")
@@ -59,6 +60,7 @@ while 1:
         print("Press 6 to search book by author")
         print("Press 7 to update book status")
         print("Press 8 to generate backup as excel file")
+        print("Press 9 to import data from excel file")
         print("Press 0 to exit")
         choice = int(input("Enter your choice"))
         if choice == 0:
@@ -130,6 +132,21 @@ while 1:
           data_frame.to_excel("backup.xlsx", index=False)
           print("Data exported to backup.xlsx successfully!")
           pause = int(input('press any key to continue'))
+        elif choice == 9:
+          # filename = input("Enter excel file name to import data")
+          # Read the Excel file into a DataFrame
+          data_frame = pd.read_excel('backup.xlsx')
+          # Upload the DataFrame to MySQL table
+          table_name = 'books'  # Add your MySQL table name here
+          hostname = 'localhost:3306'  # Add your MySQL hostname here
+          username = 'root'  # Add your MySQL username here
+          password = ''  # Add your MySQL password here
+          database = 'py22'  # Add your MySQL database name here
+
+          # Create a connection to the MySQL database
+          engine = create_engine(f'mysql+mysqlconnector://{username}:{password}@{hostname}/{database}')
+          data_frame.to_sql(table_name, con=engine, if_exists='append', index=False)
+          print(f'Excel file has been imported to the MySQL table "{table_name}".')
         else:
          print('invalid choice')
     except ValueError as error:
